@@ -20,7 +20,7 @@ app.get('/', (req, res) => res.status(200).json({
 }))
 
 
-app.get('/api/crawling/interest', async (req, res) =>{
+app.post('/api/crawling/interest', async (req, res) =>{
     //직업 흥미검사
     const URL = req.body.url;
     let result = {};
@@ -52,7 +52,7 @@ app.get('/api/crawling/interest', async (req, res) =>{
         result:result
     });
 })
-app.get('/api/crawling/engineering', async (req, res) =>{
+app.post('/api/crawling/engineering', async (req, res) =>{
     //이공계적합도 검사
     const URL = req.body.url;
     let result = {};
@@ -76,7 +76,7 @@ app.get('/api/crawling/engineering', async (req, res) =>{
         result:result
     });
 })
-app.get('/api/crawling/value', async (req, res) =>{
+app.post('/api/crawling/value', async (req, res) =>{
     //직업가치관 검사
     const URL = req.body.url;
     let result = {};
@@ -115,7 +115,7 @@ app.get('/api/crawling/value', async (req, res) =>{
         result:result
     });
 })
-app.get('/api/crawling/vocation', async (req, res) =>{
+app.post('/api/crawling/vocation', async (req, res) =>{
     //직업적성검사
     const URL = req.body.url;
     let result = {};
