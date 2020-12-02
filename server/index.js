@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const chromeDriver = require('selenium-webdriver/chrome');
-const path = require('chromeDriver').path;
+const path = require('chromedriver').path;
 const service = new chromeDriver.ServiceBuilder(path).build();
 chromeDriver.setDefaultService(service);
 
