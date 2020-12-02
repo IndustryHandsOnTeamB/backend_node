@@ -9,12 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const {Builder, By, Key, until, Capabilities} = require('selenium-webdriver');
-var chromeCapabilities = Capabilities.chrome();
-var chromeOptions = {
-    'args': ['--headless', '--no-sandbox', "--disable-dev-shm-usage"]
-};
-chromeCapabilities.set('chromeOptions', chromeOptions);
+const {Builder, By, Key, until} = require('selenium-webdriver');
 const chromeDriver = require('selenium-webdriver/chrome');
 const path = require('chromeDriver').path;
 const service = new chromeDriver.ServiceBuilder(path).build();
@@ -30,7 +25,7 @@ app.post('/api/crawling/interest', async (req, res) =>{
     //직업 흥미검사
     const URL = req.body.url;
     let result = {};
-    let driver = await new Builder().withCapabilities(chromeCapabilities).forBrowser('chrome').build()
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chromeDriver.Options().addArguments('--headless')).build()
     
     try {
         await driver.manage().setTimeouts( { implicit: 6000 } );
@@ -64,7 +59,7 @@ app.post('/api/crawling/engineering', async (req, res) =>{
     const URL = req.body.url;
     let result = {};
     
-    let driver = await new Builder().withCapabilities(chromeCapabilities).forBrowser('chrome').build()
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chromeDriver.Options().addArguments('--headless')).build()
     try {
         await driver.manage().setTimeouts( { implicit: 6000 } );
         await driver.get(URL);
@@ -88,7 +83,7 @@ app.post('/api/crawling/value', async (req, res) =>{
     const URL = req.body.url;
     let result = {};
     
-    let driver = await new Builder().withCapabilities(chromeCapabilities).forBrowser('chrome').build()
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chromeDriver.Options().addArguments('--headless')).build()
     try {
         await driver.manage().setTimeouts( { implicit: 6000 } );
         await driver.get(URL);
@@ -127,7 +122,7 @@ app.post('/api/crawling/vocation', async (req, res) =>{
     const URL = req.body.url;
     let result = {};
     
-    let driver = await new Builder().withCapabilities(chromeCapabilities).forBrowser('chrome').build()
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chromeDriver.Options().addArguments('--headless')).build()
     try {
         await driver.manage().setTimeouts( { implicit: 10000 } );
         await driver.get(URL);
