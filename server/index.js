@@ -31,7 +31,7 @@ app.post('/api/crawling/interest', async (req, res) =>{
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build()
     
     try {
-        await driver.manage().setTimeouts( { implicit: 6000 } );
+        await driver.manage().setTimeouts( { implicit: 10000 } );
         await driver.get(URL);
         let categoryArray = [];
         let categories = await driver.findElements(By.css('.tit_bar'));
@@ -64,7 +64,7 @@ app.post('/api/crawling/engineering', async (req, res) =>{
     
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build()
     try {
-        await driver.manage().setTimeouts( { implicit: 6000 } );
+        await driver.manage().setTimeouts( { implicit: 10000 } );
         await driver.get(URL);
         let categoryArray = [];
         let categories = await driver.findElements(By.css('.list_desc'));
@@ -88,7 +88,7 @@ app.post('/api/crawling/value', async (req, res) =>{
     
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build()
     try {
-        await driver.manage().setTimeouts( { implicit: 6000 } );
+        await driver.manage().setTimeouts( { implicit: 10000 } );
         await driver.get(URL);
         let values = [];
         let categories = await driver.findElements(By.css('.emph_b'));
